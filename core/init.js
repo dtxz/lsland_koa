@@ -4,12 +4,12 @@ const Router = require('koa-router');
 class InitManager {
   static initCore(app) {
     //入口方法
-    InitManager.app = app
-    InitManager.initLoadRouters()
+    InitManager.app = app;
+    InitManager.initLoadRouters();
   }
   static initLoadRouters() {
     //配置路径
-    const apiDirectory = `${process.cwd()}/app/api`
+    const apiDirectory = `${process.cwd()}/app/api`;
 
     //requireDirectory实现路由自动
     requireDirectory(module, apiDirectory, {
@@ -18,10 +18,10 @@ class InitManager {
 
     function whenLoadMoudle(obj) {
       if (obj instanceof Router) {
-        InitManager.app.use(obj.routes())
+        InitManager.app.use(obj.routes());
       }
     }
   }
 }
 
-module.exports = InitManager
+module.exports = InitManager;
