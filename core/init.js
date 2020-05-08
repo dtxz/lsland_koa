@@ -6,6 +6,7 @@ class InitManager {
     //入口方法
     InitManager.app = app;
     InitManager.initLoadRouters();
+    InitManager.loadHttpException();
   }
   static initLoadRouters() {
     //配置路径
@@ -21,6 +22,11 @@ class InitManager {
         InitManager.app.use(obj.routes());
       }
     }
+  }
+
+  static loadHttpException() {
+    const errors = require('./http-excetion');
+    global.errs = errors;
   }
 }
 
