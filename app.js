@@ -1,16 +1,13 @@
 const koa = require("koa");
-const Router = require('koa-router');
 const InitManager = require('./core/init')
 const parser = require('koa-bodyparser')
-
+const catchError = require('./middlewares/exception')
 
 const app = new koa();
 
-
-app.use(parser())
-process.cwd();
-
 InitManager.initCore(app);
+app.use(parser());
+app.use(catchError);
 
 console.log('nodemon is startting!')
 
